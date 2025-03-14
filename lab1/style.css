@@ -1,0 +1,36 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Courier New', Courier, monospace;
+}
+
+nav{
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    background-color: blueviolet;
+    height: 10vh;
+}
+
+nav a{
+    text-decoration: none;
+    color: bisque;
+    padding: 10px;
+    font-size: 1.5em;
+}
+
+nav a:hover{
+    background-color: violet;
+    border-radius: 5px;
+}
+
+main{
+    word-wrap: break-word;
+}
+
+footer{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
