@@ -9,7 +9,7 @@ nav{
     display: flex;
     justify-content: space-evenly;
     align-items: center;
-    background-color: blueviolet;
+    background-color: #8a2be2;
     height: 10vh;
 }
 
@@ -27,10 +27,54 @@ nav a:hover{
 
 main{
     word-wrap: break-word;
+    display: flex;
+    min-height: 85vh;
+}
+
+#filters{
+    flex: 1;
+    background-color: #5A27E6;
+    color: bisque;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+#filters div{
+    width: 100%;
+    padding: 10px;
+    border-bottom: 3px solid bisque;
+}
+
+#filterButton{
+    padding: 5px;
+    margin: 10px;
+    font-size: 1.2em;
+    border-radius: 5px;
+    border: none;
+    cursor: pointer;
+}
+
+#filterButton:hover{
+    background-color: lightgray;    
+}
+
+#list{
+    flex: 3;
+    background-color: #DD74E6;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+}
+
+#list div{
+    background-color: aliceblue;
+    margin: 5px;
 }
 
 footer{
     display: flex;
     justify-content: center;
     align-items: center;
+    height: 5vh;
+    background-color: bisque;
 }
