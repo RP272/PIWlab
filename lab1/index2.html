@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <script defer src="addBook.js"></script>
+    <title>Buchsien</title>
+</head>
+<body>
+    <nav>
+        <div><a href="index.html">Main page</a></div>
+        <div><a href="index2.html">Add a book</a></div>
+        <div><a href="#">Login</a></div>
+        <div><a href="#">🛒</a></div>
+    </nav>
+    <main>
+        <section id="sideBar">
+        </section>
+
+        <section id="mainSection">
+            <div id="addBook">
+                <div>
+                    <label for="name">Book name:</label>
+                    <input type="text" id="name">
+                </div>
+                <div>
+                    <label for="cover">Cover:</label>
+                    <select name="cover" id="cover">
+                        <option value="Soft">Soft</option>
+                        <option value="Hard">Hard</option>
+                    </select>
+                </div>
+                <div>
+                    <label for="pageQuantity">Number of pages:</label>
+                    <input type="number" id="pageQuantity">
+                </div>
+                <div>
+                    <label for="author">Author:</label>
+                    <input type="text" id="author">
+                </div>
+                <div>
+                    <label for="description">Description:</label>
+                    <textarea id="description" name="description">
+                    </textarea>
+                </div>
+                <div id="buttonWrapper">
+                    <button id="addButton">Add book</button>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <p>Buchsien 2025 &copy;</p>
+    </footer>
+</body>
+</html>

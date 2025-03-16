@@ -2,14 +2,13 @@ const Cover = {
     Soft: 'Soft',
     Hard: 'Hard',
 }
-const bookList = document.getElementById("list")
-const filterButton = document.getElementById("filterButton")
 
 const bookNameInput = document.getElementById("name")
 const coverInput = document.getElementById("cover")
 const pageQuantityInput = document.getElementById("pageQuantity")
 const authorInput = document.getElementById("author")
-const wordInDescriptionInput = document.getElementById("wordInDescription")
+const descriptionInput = document.getElementById("description")
+const addButton = document.getElementById("addButton")
 
 class Book{
     constructor(name, cover, numberOfPages, author, description){
@@ -86,8 +85,58 @@ if(books == null){
             "Albert Camus", 
             "Powieść paraboliczna Alberta Camusa wydana w 1947 w Paryżu"
         ),
+        new Book(
+            "Dżuma", 
+            Cover.Hard, 
+            321, 
+            "Albert Camus", 
+            "Powieść paraboliczna Alberta Camusa wydana w 1947 w Paryżu"
+        ),
+        new Book(
+            "Dżuma", 
+            Cover.Hard, 
+            321, 
+            "Albert Camus", 
+            "Powieść paraboliczna Alberta Camusa wydana w 1947 w Paryżu"
+        ),
+        new Book(
+            "Dżuma", 
+            Cover.Hard, 
+            321, 
+            "Albert Camus", 
+            "Powieść paraboliczna Alberta Camusa wydana w 1947 w Paryżu"
+        ),
+    
+        new Book(
+            "Dżuma", 
+            Cover.Hard, 
+            321, 
+            "Albert Camus", 
+            "Powieść paraboliczna Alberta Camusa wydana w 1947 w Paryżu"
+        ),
+        new Book(
+            "Dżuma", 
+            Cover.Hard, 
+            321, 
+            "Albert Camus", 
+            "Powieść paraboliczna Alberta Camusa wydana w 1947 w Paryżu"
+        ),
+        new Book(
+            "Dżuma", 
+            Cover.Hard, 
+            321, 
+            "Albert Camus", 
+            "Powieść paraboliczna Alberta Camusa wydana w 1947 w Paryżu"
+        ),
+        new Book(
+            "Dżuma", 
+            Cover.Hard, 
+            321, 
+            "Albert Camus", 
+            "Powieść paraboliczna Alberta Camusa wydana w 1947 w Paryżu"
+        ),
     ]
-    booksJSON = []
+    let booksJSON = []
     for(let book of books){
         booksJSON.push(book.asObject());
     }
@@ -100,30 +149,14 @@ if(books == null){
     }
 }
 
-let final = ""
-let count = 0;
-for(let book of books){
-    final += book.asHTML()
-}
-bookList.innerHTML = final
+addButton.addEventListener("click", () => {
+    let newBook = new Book(bookNameInput.value, coverInput.value, pageQuantityInput.value, authorInput.value, descriptionInput.value)
 
-filterButton.addEventListener("click", () => {
-    final = "";
-    count = 0;
+    books.push(newBook);
+    let booksJSON = [];
     for(let book of books){
-        if(bookNameInput.value != "" && book.name != bookNameInput.value) continue
-        if(coverInput.value != "Any"){
-            if(coverInput.value == "Hard" && book.cover != Cover.Hard) continue
-            if(coverInput.value == "Soft" && book.cover != Cover.Soft) continue
-        }
-        if(pageQuantityInput.value != 0 && book.numberOfPages != pageQuantityInput.value) continue
-        if(authorInput.value != "" && book.author != authorInput.value) continue
-        if(wordInDescriptionInput.value != "" && book.description.includes(wordInDescriptionInput.value) == false) continue
-        final += book.asHTML()
-        count++;
+        booksJSON.push(book.asObject());
     }
-    if(count == 0){
-        final = "no results. :c"
-    }
-    bookList.innerHTML = final
+    localStorage.setItem("books", JSON.stringify(booksJSON))
+    alert("Book has been successfully added!")
 })

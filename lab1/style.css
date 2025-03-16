@@ -78,3 +78,40 @@ footer{
     height: 5vh;
     background-color: bisque;
 }
+
+#sideBar{
+    flex: 1;
+    background-color: #5A27E6;
+    color: bisque;
+}
+
+#mainSection{
+    flex: 3;
+    padding: 10px;
+    background-color: #DD74E6;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+#mainSection div{
+    width: 100%;
+    padding: 10px;
+    border-bottom: 3px solid #DD74E6;
+}
+
+#addBook{
+    background-color: aliceblue;
+    margin: 10px;
+}
+
+#buttonWrapper{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#addButton{
+    padding: 5px;
+    font-size: 1.2em;
+}
