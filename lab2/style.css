@@ -8,14 +8,14 @@ li.done::marker{
     color: green;
 }
 
-p:has(+ ul.rolled){
+p:has(+ ul.displayNone){
     text-decoration: underline;
 }
 
-p:has(+ ul.rolled)::before{
+p:has(+ ul.displayNone)::before{
     content: '>';
 }
 
-.rolled{
+.displayNone{
     display: none;
 }

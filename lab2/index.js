@@ -8,6 +8,7 @@ const taskLists = document.getElementById("taskLists");
 const list1 = document.getElementById("list1");
 const deletionDialog = document.getElementById("deletionDialog");
 const confirmButton = document.getElementById("confirmButton");
+const listSearch = document.getElementById("listSearch");
 
 let recycleBin = {
     listToDelete: null,
@@ -17,6 +18,15 @@ let recycleBin = {
 const leadingZero = (number) => {
     return number < 10 ? `0${number}` : number;
 }
+
+listSearch.addEventListener("input", () => {
+    taskLists.querySelectorAll("li").forEach((element) => {
+        element.classList.remove("displayNone");
+        if(element.innerText.indexOf(listSearch.value) === -1){
+            element.classList.add("displayNone");
+        }
+    })
+})
 
 addListButton.addEventListener("click", () => {
     let listName = listInput.value;
@@ -88,7 +98,7 @@ taskLists.addEventListener("click", (e) => {
         recycleBin.listParent = e.target.parentElement.parentElement;
         deletionDialog.showModal();
     }else if(e.target.nodeName === "P"){
-        e.target.nextSibling.classList.toggle("rolled");
+        e.target.nextSibling.classList.toggle("displayNone");
     }
 })
 
