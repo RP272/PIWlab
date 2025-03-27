@@ -1,3 +1,52 @@
+*{
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    font-family: 'Comic Sans MS';
+}
+
+header{
+    height: 15vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 2em;
+    background-color: rgba(127, 251, 255, 0.829);
+    border-bottom: 10px solid orange;
+}
+
+#options{
+    background-color: lightpink;
+    display: flex;
+    border-bottom: 10px solid orange;
+}
+
+#options div{
+    display: flex;
+    align-items: center;
+    flex: 1;
+    flex-direction: column;
+    justify-content: center; 
+}
+
+#options div input, #options div select{
+    border: 0;
+    border-radius: 5px;
+}
+
+#options div button{
+    border: 0;
+    background-color: #fff;
+    padding: 10px;
+    margin: 10px 0;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+#options div button:hover{
+    background-color: lightpink;
+}
+
 li.done span.taskDesc{
     text-decoration: line-through;
     color: darkgray;
