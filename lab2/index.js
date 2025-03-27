@@ -9,6 +9,7 @@ const list1 = document.getElementById("list1");
 const deletionDialog = document.getElementById("deletionDialog");
 const confirmButton = document.getElementById("confirmButton");
 const listSearch = document.getElementById("listSearch");
+const caseSensitiveCheckbox = document.getElementById("caseSensitiveCheck");
 
 let recycleBin = {
     listToDelete: null,
@@ -19,14 +20,18 @@ const leadingZero = (number) => {
     return number < 10 ? `0${number}` : number;
 }
 
-listSearch.addEventListener("input", () => {
+const filtering = () => {
     taskLists.querySelectorAll("li").forEach((element) => {
         element.classList.remove("displayNone");
-        if(element.innerText.indexOf(listSearch.value) === -1){
+
+        if( (caseSensitiveCheckbox.checked === true && element.innerText.indexOf(listSearch.value) === -1) || (caseSensitiveCheckbox.checked === false && element.innerText.toLowerCase().indexOf(listSearch.value.toLowerCase()) === -1)){
             element.classList.add("displayNone");
         }
     })
-})
+}
+
+listSearch.addEventListener("input", filtering);
+caseSensitiveCheckbox.addEventListener("input", filtering);
 
 addListButton.addEventListener("click", () => {
     let listName = listInput.value;
