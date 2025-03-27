@@ -8,22 +8,36 @@
     <script defer src="index.js"></script>
 </head>
 <body>
-    
     <div id="addTask">
         <label for="taskInput">New task: </label>
         <input type="text" id="taskInput" name="taskInput">
+        <label for="taskInput">Where to add the task?: </label>
+        <select name="whichList" id="whichList"></select>
         <button id="addTaskButton">Add task</button>
     </div>
 
+    <div id="addList">
+        <label for="listInput">New list: </label>
+        <input type="text" id="listInput" name="listInput">
+        <button id="addListButton">Add list</button>
+    </div>
+
     <div id="taskLists">
-        <ul id="list1"></ul>
+        <!-- <div id="one">
+            <p>First list</p>
+            <ul id="list1"></ul>
+        </div>
+        <div id="one2">
+            <p>Second list</p>
+            <ul id="list12"></ul>
+        </div> -->
     </div>
 
     <dialog id="deletionDialog">
         <form>
             <p id="deletionMessage"></p>
-            <button value="cancel"  formmethod="dialog">Cancel</button>
             <button id="confirmButton">Confirm</button>
+            <button value="cancel"  formmethod="dialog">Cancel</button>
         </form>
     </dialog>
 </body>
