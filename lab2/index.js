@@ -3,6 +3,12 @@ const taskInput = document.getElementById("taskInput");
 const taskLists = document.getElementById("taskLists");
 const list1 = document.getElementById("list1");
 
+const leadingZero = (number) => {
+    return number < 10 ? `0${number}` : number;
+}
+
+let recycleBin;
+
 addTaskButton.addEventListener("click", () => {
     let taskDesc = taskInput.value;
     if(taskDesc.length === 0){
@@ -14,9 +20,6 @@ addTaskButton.addEventListener("click", () => {
     list1.appendChild(newTask);
 })
 
-const leadingZero = (number) => {
-    return number < 10 ? `0${number}` : number;
-}
 
 list1.addEventListener("click", (e) => {
     if(e.target.classList.contains("taskDesc") === true){
@@ -35,6 +38,14 @@ list1.addEventListener("click", (e) => {
         }
     }else if(e.target.classList.contains("taskDeleteButton") === true){
         // Delete li node if X button was clicked.
+        recycleBin = e.target.parentElement;
         list1.removeChild(e.target.parentElement);
+    }
+})
+
+window.addEventListener("keydown", (e) => {
+    if(recycleBin !== null && e.ctrlKey && e.code == "KeyZ"){
+        list1.appendChild(recycleBin);
+        recycleBin = null;
     }
 })
