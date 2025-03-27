@@ -1,4 +1,4 @@
-li.done{
+li.done span.taskDesc{
     text-decoration: line-through;
     color: darkgray;
 }
