@@ -13,3 +13,7 @@ addTaskButton.addEventListener("click", () => {
     newTask.innerText = taskDesc;
     list1.appendChild(newTask);
 })
+
+list1.addEventListener("click", (e) => {
+    e.target.classList.toggle("done")
+})

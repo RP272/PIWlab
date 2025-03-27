@@ -1,0 +1,9 @@
+li.done{
+    text-decoration: line-through;
+    color: darkgray;
+}
+
+li.done::marker{
+    content: '✓';
+    color: green;
+}
