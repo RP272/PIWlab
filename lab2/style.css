@@ -7,3 +7,15 @@ li.done::marker{
     content: '✓';
     color: green;
 }
+
+p:has(+ ul.rolled){
+    text-decoration: underline;
+}
+
+p:has(+ ul.rolled)::before{
+    content: '>';
+}
+
+.rolled{
+    display: none;
+}

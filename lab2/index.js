@@ -62,7 +62,7 @@ addTaskButton.addEventListener("click", () => {
     }
     let newTask = document.createElement("li");
     newTask.innerHTML = `<span class="taskDesc">${taskDesc}</span> <button class="taskDeleteButton">X</button>`;
-    taskLists.querySelector(`div[name="${selectedList}"]`).appendChild(newTask);
+    taskLists.querySelector(`div[name="${selectedList}"] ul`).appendChild(newTask);
 })
 
 
@@ -87,6 +87,8 @@ taskLists.addEventListener("click", (e) => {
         recycleBin.listToDelete = e.target.parentElement;
         recycleBin.listParent = e.target.parentElement.parentElement;
         deletionDialog.showModal();
+    }else if(e.target.nodeName === "P"){
+        e.target.nextSibling.classList.toggle("rolled");
     }
 })
 
