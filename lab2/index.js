@@ -2,6 +2,8 @@ const addTaskButton = document.getElementById("addTaskButton");
 const taskInput = document.getElementById("taskInput");
 const taskLists = document.getElementById("taskLists");
 const list1 = document.getElementById("list1");
+const deletionDialog = document.getElementById("deletionDialog");
+const confirmButton = document.getElementById("confirmButton");
 
 const leadingZero = (number) => {
     return number < 10 ? `0${number}` : number;
@@ -38,10 +40,24 @@ list1.addEventListener("click", (e) => {
         }
     }else if(e.target.classList.contains("taskDeleteButton") === true){
         // Delete li node if X button was clicked.
+        deletionDialog.querySelector("#deletionMessage").innerText = `Do you want to delete task with description: ${e.target.parentElement.getElementsByClassName("taskDesc")[0].innerText}`;
         recycleBin = e.target.parentElement;
-        list1.removeChild(e.target.parentElement);
+        deletionDialog.showModal();
     }
 })
+
+deletionDialog.addEventListener("close", (e) => {
+    if(deletionDialog.returnValue === "confirm"){
+        list1.removeChild(recycleBin);
+    }else{
+        recycleBin = null;
+    }
+})
+
+confirmButton.addEventListener("click", (event) => {
+    event.preventDefault(); 
+    deletionDialog.close("confirm");
+  });
 
 window.addEventListener("keydown", (e) => {
     if(recycleBin !== null && e.ctrlKey && e.code == "KeyZ"){
@@ -49,3 +65,4 @@ window.addEventListener("keydown", (e) => {
         recycleBin = null;
     }
 })
+
