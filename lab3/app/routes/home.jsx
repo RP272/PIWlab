@@ -26,41 +26,59 @@ export default function Home() {
     .map((it) => <Book key={it.id} book={it} />);
   return (
     <main>
-      <input
-        placeholder="Search by name"
-        // value={nameFilter}
-        onChange={(e) => setNameFilter(e.target.value)}
-        autoFocus
-      ></input>
-
-      <input
-        placeholder="Search by cover"
-        // value={coverFilter}
-        onChange={(e) => setCoverFilter(e.target.value)}
-        autoFocus
-      ></input>
-
-      <input
-        placeholder="Search by pages"
-        // value={pageFilter}
-        onChange={(e) => setPageFilter(e.target.value)}
-        autoFocus
-      ></input>
-
-      <input
-        placeholder="Search by author"
-        // value={authorFilter}
-        onChange={(e) => setAuthorFilter(e.target.value)}
-        autoFocus
-      ></input>
-
-      <input
-        placeholder="Search by description"
-        // value={descriptionFilter}
-        onChange={(e) => setDescriptionFilter(e.target.value)}
-        autoFocus
-      ></input>
-      
+      <section id="filters">
+            <div>
+                <label htmlFor="name">Search by name: </label>
+                <input
+                  id="name"
+                  name="name"
+                  placeholder="title"
+                  onChange={(e) => setNameFilter(e.target.value)}
+                  autoFocus
+                ></input>
+            </div>
+            <div>
+                <label htmlFor="cover">Search by cover: </label>
+                <input
+                id="cover"
+                name="cover"
+                placeholder="cover type"
+                onChange={(e) => setCoverFilter(e.target.value)}
+                autoFocus
+              ></input>
+            </div>
+            <div>
+                <label htmlFor="pageQuantity">Search by pages: </label>
+                <input
+                id="pageQuantity"
+                name="pageQuantity"
+                placeholder="# of pages"
+                onChange={(e) => setPageFilter(e.target.value)}
+                autoFocus
+              ></input>
+            </div>
+            <div>
+                <label htmlFor="author">Search by author: </label>
+                <input
+                id="author"
+                name="author"
+                placeholder="full name"
+                onChange={(e) => setAuthorFilter(e.target.value)}
+                autoFocus
+              ></input>
+            </div>
+            <div>
+                <label htmlFor="wordInDescription">Search by description: </label>
+                <input
+                id="wordInDescription"
+                name="wordInDescription"
+                placeholder="sentence"
+                onChange={(e) => setDescriptionFilter(e.target.value)}
+                autoFocus
+              ></input>
+            </div>
+        </section>
+      <hr />
       {bookListHTML}
     </main>
   );
