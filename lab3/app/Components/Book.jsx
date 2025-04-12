@@ -1,13 +1,13 @@
 export default ({ book }) => {
     return (
       <article>
-        <span>
-            <span>Book name: {book.name}</span>
-            <span>Cover: {book.cover}</span>
-            <span>Number of pages:{book.numberOfPages}</span>
-            <span>Author: {book.author}</span>
-            <span>Description: {book.description}</span>
-        </span>
+        <div>Book name: {book.name}</div>
+        <div>Cover: {book.cover}</div>
+        <div>Number of pages:{book.numberOfPages}</div>
+        <div>Author: {book.author}</div>
+        <div>Description: {book.description}</div>
+        <button>Edit</button>
+        <button>Delete</button>
       </article>
     );
   };

@@ -5,6 +5,7 @@ export default function NavBar() {
     <nav>
       <NavLink to="/">All</NavLink>
       <NavLink to="/new">Add New</NavLink>
+      <NavLink to="/login">Login</NavLink>
     </nav>
   );
 }
