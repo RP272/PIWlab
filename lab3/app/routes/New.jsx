@@ -29,41 +29,66 @@ export default function New() {
             description: newDescription,
         };
         setBookList((prev) => prev.concat([tempBook]));
+        alert("New book has been added!")
     };
 
     return (
-        <main >
-        <form>
-            <input
-            placeholder="Title"
-            value={newTitle}
-            onChange={(e) => setNewTitle(e.target.value)}
-            autoFocus
-            />
-            <CoverSelector
-            selectedCover={selectedCover}
-            setSelectedCover={setSelectedCover}
-            />
-            <input
-            placeholder="Number of pages"
-            value={newPages}
-            onChange={(e) => setNewPages(e.target.value)}
-            autoFocus
-            />
-             <input
-            placeholder="Author"
-            value={newAuthor}
-            onChange={(e) => setNewAuthor(e.target.value)}
-            autoFocus
-            />
-             <input
-            placeholder="Description"
-            value={newDescription}
-            onChange={(e) => setNewDescription(e.target.value)}
-            autoFocus
-            />     
-            <button onClick={handleNewBook}>Add</button>
-        </form>
-        </main>
+        <section id="mainNew">
+            <section id="sideBar"></section>
+
+            <section id="mainSection">
+                <div id="addBook">
+                    <form>
+                        <div>
+                            <label for="name">Book name: </label>
+                            <input
+                            placeholder="Title"
+                            value={newTitle}
+                            onChange={(e) => setNewTitle(e.target.value)}
+                            autoFocus
+                            />
+                        </div>
+                        <div>
+                            <label for="cover">Cover: </label>
+                            <CoverSelector
+                            selectedCover={selectedCover}
+                            setSelectedCover={setSelectedCover}
+                            />
+                        
+                        </div>
+                        <div>
+                            <label for="pageQuantity">Number of pages: </label>
+                            <input
+                            placeholder="Number of pages"
+                            value={newPages}
+                            onChange={(e) => setNewPages(e.target.value)}
+                            autoFocus
+                            />
+                        </div>
+                        <div>
+                            <label for="author">Author: </label>
+                            <input
+                            placeholder="Author"
+                            value={newAuthor}
+                            onChange={(e) => setNewAuthor(e.target.value)}
+                            autoFocus
+                            />
+                        </div>
+                        <div>
+                            <label for="description">Description: </label>
+                            <input
+                            placeholder="Description"
+                            value={newDescription}
+                            onChange={(e) => setNewDescription(e.target.value)}
+                            autoFocus
+                            />   
+                        </div>
+                        <div id="buttonWrapper">
+                            <button id="addButton" onClick={handleNewBook}>Add</button>
+                        </div>
+                    </form>
+                </div>
+            </section>
+        </section>
     );
 }
