@@ -34,18 +34,18 @@ export default function Home() {
                   name="name"
                   placeholder="title"
                   onChange={(e) => setNameFilter(e.target.value)}
-                  autoFocus
                 ></input>
             </div>
             <div>
                 <label htmlFor="cover">Search by cover: </label>
-                <input
+                <select
                 id="cover"
                 name="cover"
-                placeholder="cover type"
-                onChange={(e) => setCoverFilter(e.target.value)}
-                autoFocus
-              ></input>
+                onChange={(e) => setCoverFilter(e.target.value)}>
+                  <option value="" >all</option>
+                  <option value="hard" >hard</option>
+                  <option value="soft" >soft</option>
+                </select>
             </div>
             <div>
                 <label htmlFor="pageQuantity">Search by pages: </label>
@@ -54,7 +54,6 @@ export default function Home() {
                 name="pageQuantity"
                 placeholder="# of pages"
                 onChange={(e) => setPageFilter(e.target.value)}
-                autoFocus
               ></input>
             </div>
             <div>
@@ -64,7 +63,6 @@ export default function Home() {
                 name="author"
                 placeholder="full name"
                 onChange={(e) => setAuthorFilter(e.target.value)}
-                autoFocus
               ></input>
             </div>
             <div>
@@ -74,7 +72,6 @@ export default function Home() {
                 name="wordInDescription"
                 placeholder="sentence"
                 onChange={(e) => setDescriptionFilter(e.target.value)}
-                autoFocus
               ></input>
             </div>
         </section>
