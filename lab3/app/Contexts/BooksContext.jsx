@@ -26,7 +26,7 @@ export const BooksProvider = ({ children }) => {
             cover: "soft", 
             numberOfPages: 134, 
             author: "Johann Wolfgang von Goethe", 
-            description: "Faust to dramat niemieckiego poety, polityka, uczonego Johanna Wolfganga von Goethego w dwóch częściach."
+            description: "Faust to dramat niemieckiego poety, polityka, uczonego Johanna Wolfganga von Goethego w dwóch częściach. "
         },
         {
             id: 4,

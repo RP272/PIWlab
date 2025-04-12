@@ -24,8 +24,9 @@ export default function Home() {
     .filter((it) => authorFilter.length === 0 || it.author === authorFilter)
     .filter((it) => descriptionFilter.length === 0 || it.description.includes(descriptionFilter))
     .map((it) => <Book key={it.id} book={it} />);
-  return (
-    <main>
+
+    return (
+    <section id="mainLibrary">
       <section id="filters">
             <div>
                 <label htmlFor="name">Search by name: </label>
@@ -34,7 +35,7 @@ export default function Home() {
                   name="name"
                   placeholder="title"
                   onChange={(e) => setNameFilter(e.target.value)}
-                ></input>
+                  ></input>
             </div>
             <div>
                 <label htmlFor="cover">Search by cover: </label>
@@ -42,7 +43,7 @@ export default function Home() {
                 id="cover"
                 name="cover"
                 onChange={(e) => setCoverFilter(e.target.value)}>
-                  <option value="" >all</option>
+                  <option value="" >any</option>
                   <option value="hard" >hard</option>
                   <option value="soft" >soft</option>
                 </select>
@@ -72,11 +73,15 @@ export default function Home() {
                 name="wordInDescription"
                 placeholder="sentence"
                 onChange={(e) => setDescriptionFilter(e.target.value)}
-              ></input>
+                ></input>
             </div>
         </section>
       <hr />
-      {bookListHTML}
-    </main>
+
+      <section id="list">
+        {bookListHTML.length != 0 && bookListHTML}
+        {bookListHTML.length === 0 && "No matches found :c"}
+      </section>
+    </section>
   );
 }

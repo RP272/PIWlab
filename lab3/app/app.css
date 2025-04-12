@@ -2,6 +2,107 @@
   margin: 0;
   padding: 0;
   box-sizing: border-box;
+  font-family: 'Courier New', Courier, monospace;
+}
+
+nav{
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    background-color: #8a2be2;
+    height: 10vh;
+}
+
+nav a{
+    text-decoration: none;
+    color: bisque;
+    padding: 10px;
+    font-size: 1.5em;
+}
+
+nav a:hover{
+    background-color: violet;
+    border-radius: 5px;
+}
+
+section#mainLibrary{
+    word-wrap: break-word;
+    display: flex;
+    min-height: 85vh;
+}
+
+#filters{
+    flex: 1;
+    background-color: #5A27E6;
+    color: bisque;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+#filters div{
+    width: 100%;
+    padding: 10px;
+    border-bottom: 3px solid bisque;
+}
+
+#list{
+    flex: 3;
+    background-color: #DD74E6;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+}
+
+#list article{
+    background-color: aliceblue;
+    padding: 5px;
+    margin: 5px;
+    position: relative;
+}
+
+footer{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 5vh;
+    background-color: bisque;
+}
+
+#sideBar{
+    flex: 1;
+    background-color: #5A27E6;
+    color: bisque;
+}
+
+#mainSection{
+    flex: 3;
+    padding: 10px;
+    background-color: #DD74E6;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+#mainSection div{
+    width: 100%;
+    padding: 10px;
+    border-bottom: 3px solid #DD74E6;
+}
+
+#addBook{
+    background-color: aliceblue;
+    margin: 10px;
+}
+
+#buttonWrapper{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#addButton{
+    padding: 5px;
+    font-size: 1.2em;
 }
 
 input[type="radio"] {
@@ -25,4 +126,20 @@ input[type="radio"]::before {
   font-size: x-large;
   top: 0;
   left: 0;
+}
+
+.bookButtons{
+  display: flex;
+  justify-content: space-around;
+}
+
+.bookButtons button{
+  padding: 10px;
+  margin: 10px;
+}
+
+.bookInfo{
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
 }
