@@ -10,6 +10,7 @@ import {
 import stylesheet from "./app.css?url";
 import NavBar from "./Components/NavBar";
 import Footer from "./Components/Footer";
+import { BooksProvider } from "./Contexts/BooksContext";
 
 export const links = () => [
   { rel: "preconnect", href: "https://fonts.googleapis.com" },
@@ -46,7 +47,11 @@ export function Layout({ children }) {
 }
 
 export default function App() {
-  return <Outlet />;
+  return (
+    <BooksProvider>
+      <Outlet />
+    </BooksProvider>
+  ); 
 }
 
 export function ErrorBoundary({ error }) {
