@@ -1,6 +1,7 @@
 import Book from "../Components/Book";
 import { BooksContext } from "../Contexts/BooksContext";
 import { useContext, useState } from "react";
+
 export function meta() {
   return [
     { title: "Buchsien" },
@@ -14,7 +15,7 @@ export default function Home() {
   const [ pageFilter, setPageFilter ] = useState("");
   const [ authorFilter, setAuthorFilter ] = useState("");
   const [ descriptionFilter, setDescriptionFilter ] = useState("");
-  
+
   const { bookList, setBookList } = useContext(BooksContext);
 
   const bookListHTML = bookList
