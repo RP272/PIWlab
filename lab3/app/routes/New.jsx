@@ -1,6 +1,8 @@
 import { useContext, useState } from "react";
 import { BooksContext } from "../Contexts/BooksContext";
 import CoverSelector from "../Components/CoverSelector";
+import { createBook } from "../data/bookService";
+import { useNavigate } from "react-router";
 
 export function meta() {
   return [
@@ -17,19 +19,27 @@ export default function New() {
     const [ newDescription, setNewDescription ] = useState("");
     const [ selectedCover, setSelectedCover ] = useState("hard");
 
+    const navigate = useNavigate();
+
     const handleNewBook = (e) => {
         e.preventDefault();
+        let maxID = 0;
+        for(const v of bookList){
+            if(v.id > maxID) maxID = v.id;
+        }
         if (!newTitle || !newPages || !newAuthor || !newDescription) return;
         const tempBook = {
-            id: bookList.length + 1,
+            id: maxID + 1,
             name: newTitle,
             cover: selectedCover,
             numberOfPages: newPages,
             author: newAuthor,
             description: newDescription,
         };
-        setBookList((prev) => prev.concat([tempBook]));
+        createBook(tempBook).then((newBook) => setBookList((prev) => prev.concat(newBook)));
+        // setBookList((prev) => prev.concat([newBook]));
         alert("New book has been added!")
+        navigate("/");
     };
 
     return (

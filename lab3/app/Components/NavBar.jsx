@@ -7,10 +7,10 @@ export default function NavBar() {
     <nav>
       <NavLink to="/">Library</NavLink>
       <NavLink to="/new">Add New</NavLink>
-      {!!user || <NavLink to="/login" className="App-mini-button">Login</NavLink> }
-        {!!user && <button className="App-mini-button" onClick={logout}>
+      {!!user || <NavLink to="/login">Login</NavLink> }
+        {!!user && <NavLink onClick={logout}>
           Logout {user?.displayName}
-        </button>}
+        </NavLink>}
     </nav>
   );
 }

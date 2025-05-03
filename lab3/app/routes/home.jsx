@@ -1,6 +1,7 @@
 import Book from "../Components/Book";
 import { BooksContext } from "../Contexts/BooksContext";
 import { useContext, useState } from "react";
+import { useUser } from "../data/userService";
 
 export function meta() {
   return [
@@ -10,6 +11,7 @@ export function meta() {
 }
 
 export default function Home() {
+  const [ myFilter, setMyFilter ] = useState(false);
   const [ nameFilter, setNameFilter ] = useState("");
   const [ coverFilter, setCoverFilter ] = useState("");
   const [ pageFilter, setPageFilter ] = useState("");
@@ -17,8 +19,10 @@ export default function Home() {
   const [ descriptionFilter, setDescriptionFilter ] = useState("");
 
   const { bookList, setBookList } = useContext(BooksContext);
-
+  const user = useUser();
+  console.log({bookList});
   const bookListHTML = bookList
+    .filter((it) => myFilter === false || user?.uid === it.userId)
     .filter((it) => nameFilter.length === 0 || it.name === nameFilter)
     .filter((it) => coverFilter.length === 0 || it.cover === coverFilter)
     .filter((it) => pageFilter.length === 0 || it.numberOfPages === pageFilter)
@@ -29,6 +33,14 @@ export default function Home() {
     return (
     <section id="mainLibrary">
       <section id="filters">
+            <div>
+              <label htmlFor="my">My books: </label>
+              <input 
+                type="checkbox"
+                name="my"
+                onClick={(e) => {setMyFilter(!myFilter)}}
+              ></input>
+            </div>
             <div>
                 <label htmlFor="name">Search by name: </label>
                 <input

@@ -5,18 +5,21 @@ const Login = () => {
   const navigate = useNavigate();
 
   return (
-    <main className="main-center">
-      <label htmlFor="email">Email</label>
-      <input id="email"/>
-      <label htmlFor="pasword">Password</label>
-      <input id="password" type="password" />
-      <br></br>
-      <button  className="App-mini-button">Login with email</button>
+    <section id="mainLibrary">
 
-      <br/>
-      <br/>
-      <button className="App-mini-button" onClick={() => login(navigate)}>Login with Google</button>
-    </main>
+      <section id="mainSection">
+        <label htmlFor="email">Email</label>
+        <input id="email"/>
+        <label htmlFor="pasword">Password</label>
+        <input id="password" type="password" />
+        <br></br>
+        <button  className="App-mini-button">Login with email</button>
+
+        <br/>
+        <br/>
+        <button className="App-mini-button" onClick={() => login(navigate)}>Login with Google</button>
+      </section>
+    </section>
   )
 }
 

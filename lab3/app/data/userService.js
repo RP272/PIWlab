@@ -7,8 +7,7 @@ const googleProvider = new GoogleAuthProvider();
 export const login = async (navigate) =>{
   const userCredentials = await signInWithPopup(auth, googleProvider);
   if(userCredentials.user) {
-    console.log({userCredentials});
-    // navigate("/");
+    navigate("/");
   }
 }
 
