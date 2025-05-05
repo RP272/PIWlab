@@ -58,9 +58,10 @@ export const BooksProvider = ({ children }) => {
 
     const [bookList, setBookList] = useState([]);
   
-    const user = useUser();
     useEffect(() => {
-        readBooks().then(docs => setBookList(docs))
+        readBooks().then(docs => {
+          setBookList(docs)
+        })
     }, []);
 
     return (

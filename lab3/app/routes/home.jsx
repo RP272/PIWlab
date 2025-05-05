@@ -20,7 +20,6 @@ export default function Home() {
 
   const { bookList, setBookList } = useContext(BooksContext);
   const user = useUser();
-  console.log({bookList});
   const bookListHTML = bookList
     .filter((it) => myFilter === false || user?.uid === it.userId)
     .filter((it) => nameFilter.length === 0 || it.name === nameFilter)
