@@ -1,8 +1,9 @@
-import { useContext, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import { BooksContext } from "../Contexts/BooksContext";
 import CoverSelector from "../Components/CoverSelector";
 import { createBook } from "../data/bookService";
 import { useNavigate } from "react-router";
+import { useUser } from "../data/userService";
 
 export function meta() {
   return [
@@ -12,6 +13,15 @@ export function meta() {
 }
 
 export default function New() {
+    const navigate = useNavigate();
+    const user = useUser();
+    
+    useEffect(()=>{
+        if(!user){
+            navigate("/");
+        }
+    }, [])
+    
     const { bookList, setBookList } = useContext(BooksContext);
     const [ newTitle, setNewTitle ] = useState("");
     const [ newPages, setNewPages ] = useState(0);
@@ -19,7 +29,6 @@ export default function New() {
     const [ newDescription, setNewDescription ] = useState("");
     const [ selectedCover, setSelectedCover ] = useState("hard");
 
-    const navigate = useNavigate();
 
     const handleNewBook = (e) => {
         e.preventDefault();

@@ -6,7 +6,7 @@ export default function NavBar() {
   return (
     <nav>
       <NavLink to="/">Library</NavLink>
-      <NavLink to="/new">Add New</NavLink>
+      {!!user && <NavLink to="/new">Add New</NavLink>}  
       {!!user || <NavLink to="/login">Login</NavLink> }
         {!!user && <NavLink onClick={logout}>
           Logout {user?.displayName}
