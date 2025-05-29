@@ -22,13 +22,27 @@ export const logout = async () => {
   signOut(auth);
 }
 
-export const useUser = () => {
+// export const useUser = () => {
 
-  const [user, setUser] = useState(auth?.currentUser);
+//   const [user, setUser] = useState(auth?.currentUser);
+
+//   useEffect(() => {
+//     auth.onAuthStateChanged( u => setUser(u));
+//   }, [])
+
+//   return user;
+// }
+
+export const useUser = () => {
+  const [user, setUser] = useState(undefined); // 🔧 start with undefined
 
   useEffect(() => {
-    auth.onAuthStateChanged( u => setUser(u));
-  }, [])
+    const unsubscribe = auth.onAuthStateChanged((u) => {
+      setUser(u); // could be null or user
+    });
 
-  return user;
-}
+    return () => unsubscribe(); // good practice to clean up
+  }, []);
+
+  return user; // now: undefined (loading), null (logged out), object (logged in)
+};

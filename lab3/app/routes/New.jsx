@@ -13,22 +13,37 @@ export function meta() {
 }
 
 export default function New() {
-    const navigate = useNavigate();
-    const user = useUser();
+    // const navigate = useNavigate();
+    // const user = useUser();
     
-    useEffect(()=>{
-        if(!user){
-            navigate("/");
-        }
-    }, [])
-    
+    // useEffect(() => {
+    //     if (user === undefined) return; // still loading
+    //     if (!user) {
+    //         navigate("/");
+    //     }
+    // }, [user]);
     const { bookList, setBookList } = useContext(BooksContext);
     const [ newTitle, setNewTitle ] = useState("");
-    const [ newPages, setNewPages ] = useState(0);
+    const [ newPages, setNewPages ] = useState("");
     const [ newAuthor, setNewAuthor ] = useState("");
     const [ newDescription, setNewDescription ] = useState("");
     const [ selectedCover, setSelectedCover ] = useState("hard");
+    const navigate = useNavigate();
+    const user = useUser();
 
+    useEffect(() => {
+        if (user === null) {
+        navigate("/");
+        }
+    }, [user]);
+
+    if (user === undefined) {
+        return <div>Loading...</div>; // wait for auth to resolve
+    }
+
+    if (!user) {
+        return null; // optional, will redirect soon
+    }
 
     const handleNewBook = (e) => {
         e.preventDefault();
@@ -41,14 +56,16 @@ export default function New() {
             id: maxID + 1,
             name: newTitle,
             cover: selectedCover,
-            numberOfPages: newPages,
+            numberOfPages: parseInt(newPages, 10),
             author: newAuthor,
             description: newDescription,
         };
-        createBook(tempBook).then((newBook) => setBookList((prev) => prev.concat(newBook)));
+        createBook(tempBook).then((newBook) => {
+            setBookList((prev) => prev.concat(newBook))
+            alert("New book has been added!")
+            navigate("/");
+        });
         // setBookList((prev) => prev.concat([newBook]));
-        alert("New book has been added!")
-        navigate("/");
     };
 
     return (
@@ -81,7 +98,6 @@ export default function New() {
                             placeholder="Number of pages"
                             value={newPages}
                             onChange={(e) => setNewPages(e.target.value)}
-                            autoFocus
                             />
                         </div>
                         <div>
@@ -90,7 +106,6 @@ export default function New() {
                             placeholder="Author"
                             value={newAuthor}
                             onChange={(e) => setNewAuthor(e.target.value)}
-                            autoFocus
                             />
                         </div>
                         <div>
@@ -99,7 +114,6 @@ export default function New() {
                             placeholder="Description"
                             value={newDescription}
                             onChange={(e) => setNewDescription(e.target.value)}
-                            autoFocus
                             />   
                         </div>
                         <div id="buttonWrapper">

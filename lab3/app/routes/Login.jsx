@@ -32,10 +32,7 @@ const Login = () => {
             value={password}
             onChange={(e) => setPassword(e.target.value)}
           />
-          <br></br>
-          <button  className="App-mini-button">Login with email</button>
-
-
+          <button className="App-mini-button">Login with email</button>
           <button className="App-mini-button" onClick={() => login(navigate)}>Login with Google</button>
         </section>
       </section>

@@ -10,7 +10,7 @@ describe('Check Main Page', () => {
 
     it('Test hard cover filter', () => {
         cy.get("select#cover").select("hard");
-        cy.get("section#list article").should("have.length", 4);
+        cy.get("section#list article").should("have.length", 7);
     });
 
     it('Test "Search by description" filter', () => {
