@@ -1,8 +1,15 @@
 import { useEffect, useState } from "react";
 import { auth } from "./init";
-import { GoogleAuthProvider, signInWithPopup, signOut } from "firebase/auth";
+import { GoogleAuthProvider, signInWithEmailAndPassword, signInWithPopup, signOut } from "firebase/auth";
 
 const googleProvider = new GoogleAuthProvider();
+
+export const loginWithEmail = async (email, password, navigate) => {
+  const userCredentials = await signInWithEmailAndPassword(auth, email, password);
+  if(userCredentials.user) {
+    navigate("/");
+  }
+}
 
 export const login = async (navigate) =>{
   const userCredentials = await signInWithPopup(auth, googleProvider);
