@@ -37,7 +37,7 @@ export default function NavBar() {
         <a id="dropdown" onClick={toggleDropdown}>
           💜 {state.length}
           <div className="hide" id="favourites" ref={favouritesRef}>
-            {favouriteHTML}
+            {favouriteHTML.length === 0 ? <article>empty :c</article> : favouriteHTML}
           </div>
         </a>
     </nav>
