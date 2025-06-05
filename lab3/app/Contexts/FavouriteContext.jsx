@@ -1,4 +1,4 @@
-const { createContext, useReducer } = require("react");
+import { createContext, useReducer } from "react";  
 
 const initState = [];
 
@@ -23,3 +23,5 @@ export const FavouriteProvider = ({children}) => {
         {children}
     </FavouriteContext.Provider>
 };
+
+export default FavouriteContext;
