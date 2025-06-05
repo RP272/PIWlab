@@ -1,12 +1,30 @@
 import { NavLink } from "react-router";
 import { useUser, logout } from "../data/userService";
 import FavouriteContext from "../Contexts/FavouriteContext";
-import { use } from "react";
+import { use, useRef } from "react";
 
 export default function NavBar() {
+  const favouritesRef = useRef();
   const user = useUser();
 
-  const { state } = use(FavouriteContext);
+  const { state, dispatch } = use(FavouriteContext);
+  const favouriteHTML = state.map((it) => {
+    return <article key={it.id} onClick={(event) => {removeBook(event, it)}}>
+      {it.name}
+    </article>
+  });
+
+  const toggleDropdown = () => {
+    favouritesRef.current.style.display = favouritesRef.current.style.display === "block" ? "none" : "block";
+    favouritesRef.current.classList.toggle("show");
+    favouritesRef.current.classList.toggle("hide");
+  };
+
+  const removeBook = (event, book) => {
+    event.stopPropagation();
+    event.preventDefault();
+    dispatch({type: "REMOVE_BOOK", payload: book});
+  }
 
   return (
     <nav>
@@ -16,7 +34,13 @@ export default function NavBar() {
         {!!user && <NavLink onClick={logout}>
           Logout {user?.displayName}
         </NavLink>}
-      <NavLink>💜 {state.length}</NavLink>
+        <a id="dropdown" onClick={toggleDropdown}>
+          💜 {state.length}
+          <div className="hide" id="favourites" ref={favouritesRef}>
+            {favouriteHTML}
+          </div>
+        </a>
     </nav>
+    
   );
 }

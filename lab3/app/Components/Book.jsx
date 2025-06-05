@@ -1,13 +1,21 @@
-import { useContext } from "react";
+import { use, useContext } from "react";
 import { deleteBook } from "../data/bookService";
 import { BooksContext } from "../Contexts/BooksContext";
 import { auth } from "../data/init";
 import { useNavigate } from "react-router";
 import { useUser } from "../data/userService";
+import FavouriteContext from "../Contexts/FavouriteContext";
 
 export default ({ book }) => {
     const navigate = useNavigate();
     const { bookList, setBookList } = useContext(BooksContext);
+    
+    const {state, dispatch} = use(FavouriteContext);
+    const handleAddNewFavourite = () => {
+      if(state.includes(book)) return;
+      dispatch({type: "ADD_BOOK", payload: book});
+    }
+    
     const user = useUser();
     const handleBookDelete = () => {
       if(auth?.currentUser?.uid != book.userId) return; 
@@ -28,6 +36,7 @@ export default ({ book }) => {
           }}>Edit</button>
           <button onClick={(e) => handleBookDelete()}>Delete</button>
         </div>}
+        <button className="favouriteHeart" onClick={handleAddNewFavourite}>💜</button>
       </article>
     );
   };
